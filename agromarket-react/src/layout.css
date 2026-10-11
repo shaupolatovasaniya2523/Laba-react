@@ -1,0 +1,126 @@
+/* Сброс box model: width/height включают padding и border */
+*,
+*::before,
+*::after {
+ box-sizing: border-box;
+}
+body {
+ margin: 0;
+ font-family: system-ui, Arial, sans-serif;
+ background: #f5f7f2;
+ color: #1f2a1f;
+}
+
+catalog {
+    display: grid;
+    gap: 20px;
+}
+
+.card {
+ display: flex;
+ flex-direction: column; /* элементы карточки — в столбик */
+ gap: 8px;
+ padding: 16px;
+ background: #fff;
+ border: 1px solid #dfe6dc;
+ border-radius: 10px;
+}
+.card img {
+ width: 100%;
+ height: 160px;
+ object-fit: cover; /* обрезать, а не растягивать картинку */
+ border-radius: 6px;
+}
+.card h3,
+.card p {
+ margin: 0;
+}
+.card button {
+ margin-top: auto; /* ← «съедает» всё свободное место сверху */
+ padding: 10px;
+ border: none;
+ border-radius: 6px;
+ background: #2e7d32;
+ color: #fff;
+ cursor: pointer;
+}
+
+.product-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 20px;
+}
+
+
+.site-header {
+ display: flex;
+ justify-content: space-between; /* логотип слева, корзина справа */
+ align-items: center; /* всё по центру по высоте */
+ gap: 16px;
+ padding: 12px 24px;
+ background: #2e7d32;
+ color: #fff;
+}
+.logo {
+ font-size: 1.3rem;
+ font-weight: 700;
+ color: #fff;
+ text-decoration: none;
+}
+.nav-links {
+ display: flex;
+ gap: 24px;
+ list-style: none; /* убираем точки у <li> */
+ margin: 0;
+ padding: 0;
+}
+.nav-links a {
+ color: #fff;
+ text-decoration: none;
+}
+
+.page {
+ display: grid;
+ grid-template-columns: 1fr;
+ gap: 24px;
+ max-width: 1280px;
+ margin: 0 auto; /* центрируем контент на широком экране */
+ padding: 16px;
+}
+.sidebar {
+ background: #fff;
+ border: 1px solid #dfe6dc;
+ border-radius: 10px;
+ padding: 16px;
+}
+/* Десктоп: каталог слева (3 доли), доставка справа (1 доля) */
+@media (min-width: 1024px) {
+ .page {
+ grid-template-columns: 3fr 1fr;
+ padding: 24px;
+ }
+ .sidebar {
+ align-self: start; /* не растягиваться на всю высоту каталога */
+ }
+}
+
+/* ===== Форма ===== */
+.contact {
+ grid-column: 1 / -1; /* от первой до последней линии сетки = вся ширина */
+ background: #fff;
+ border: 1px solid #dfe6dc;
+ border-radius: 10px;
+ padding: 16px;
+}
+.contact-form {
+ display: grid;
+ gap: 8px;
+ max-width: 520px;
+}
+.contact-form input,
+.contact-form textarea {
+ padding: 8px 12px;
+ border: 1px solid #b9c4b5;
+ border-radius: 6px;
+ font: inherit;
+}
